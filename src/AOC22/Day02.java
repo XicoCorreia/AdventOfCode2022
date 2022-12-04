@@ -1,23 +1,26 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+package AOC22;
+
 import java.util.List;
 
-public class Day2 {
+public class Day02 extends AOC22{
 	
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("day2.txt"));
-		String line;
-		List<String> values = new ArrayList<String>();
-		while((line = br.readLine()) != null) { values.add(line); }
-		part1(values);
-		part2(values);
-		br.close();
+	public Day02() {
+		super("02");
 	}
-
-	private static void part1(List<String> values) {
-		long score = 0;
+	
+	@Override
+	protected void solve(List<String> values) {
+		
+		String answerPart1 = solvePart1(values);
+		printAnswer("1", answerPart1);
+		
+		String answerPart2 = solvePart2(values);
+		printAnswer("2", answerPart2);
+		
+	}
+	
+	private static String solvePart1(List<String> values) {
+		int score = 0;
 		
 		for(String val : values) {
 			String[] elfVsMe = val.split(" ");
@@ -44,12 +47,11 @@ public class Day2 {
 					score += 6;
 			}	
 		}
-		
-		System.out.println(score);
+		return Integer.toString(score);
 	}
 	
-	private static void part2(List<String> values) {
-		long score = 0;
+	private static String solvePart2(List<String> values) {
+		int score = 0;
 		
 		for(String val : values) {
 			String[] elfVsMe = val.split(" ");
@@ -81,7 +83,8 @@ public class Day2 {
 					score += 1;
 			}	
 		}
-		
-		System.out.println(score);
+		return Integer.toString(score);
 	}
+
+
 }
