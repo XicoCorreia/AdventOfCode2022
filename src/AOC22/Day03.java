@@ -21,10 +21,10 @@ public class Day03 extends AOC22{
 		}
 		
 		String answerPart1 = solvePart1(values);
-		printAnswer("1", answerPart1);
+		printAnswer(answerPart1);
 		
 		String answerPart2 = solvePart2(values);
-		printAnswer("2", answerPart2);
+		printAnswer(answerPart2);
 	}
 	
 

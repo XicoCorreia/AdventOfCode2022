@@ -11,6 +11,7 @@ import java.util.List;
 public abstract class AOC22 {
 	
 	private String day;
+	private int part = 1;
 	protected AOC22(String day) {
 		this.day = day;
 		
@@ -49,8 +50,9 @@ public abstract class AOC22 {
 	
 	protected abstract void solve(List<String> values);
 	
-	protected void printAnswer(String part, String answer) {
+	protected void printAnswer(String answer) {
 		System.out.println("The answer for part " + part + " of day " + day + " is " + answer);
+		part++;
 	}
 	
 

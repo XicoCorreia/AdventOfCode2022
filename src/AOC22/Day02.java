@@ -12,10 +12,10 @@ public class Day02 extends AOC22{
 	protected void solve(List<String> values) {
 		
 		String answerPart1 = solvePart1(values);
-		printAnswer("1", answerPart1);
+		printAnswer(answerPart1);
 		
 		String answerPart2 = solvePart2(values);
-		printAnswer("2", answerPart2);
+		printAnswer(answerPart2);
 		
 	}
 	

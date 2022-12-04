@@ -33,6 +33,6 @@ public class Day01 extends AOC22{
 			}
 		}
 		String answer = Integer.toString((int) (top3[0] + top3[1] + top3[2]));
-		printAnswer("2", answer);
+		printAnswer(answer);
 	}		
 }
