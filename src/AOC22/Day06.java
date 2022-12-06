@@ -39,5 +39,4 @@ public class Day06 extends AOC22{
 			}
 		}
 	}
-
 }
