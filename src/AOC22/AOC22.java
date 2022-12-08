@@ -16,6 +16,7 @@ public abstract class AOC22 {
 		this.day = day;
 		
 		File input = new File("res/day" + this.day + ".txt");
+		
 		//File input = new File("res/test.txt");		
 		if(!input.exists()) {
 			System.err.println("File doesn't exist!");

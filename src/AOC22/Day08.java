@@ -12,16 +12,18 @@ public class Day08 extends AOC22{
 	@Override
 	protected void solve(List<String> values) {
 		List<char[]> trees = new ArrayList<char[]>();
-		int count = 0;
 		for(String val : values) {
 			trees.add(val.toCharArray());
 		}
+		
+		//Part 1
+		int answer = 0;
 		
 		for (int i = 0; i < trees.size(); i++) {
 			for (int j = 0; j < trees.get(i).length; j++) {
 				//Check sides
 				if(i == 0 || i == trees.size()-1 || j == 0 || j == trees.get(i).length - 1) {
-					count ++;
+					answer ++;
 					continue;
 				}
 				int tree = Character.getNumericValue(trees.get(i)[j]);
@@ -32,7 +34,7 @@ public class Day08 extends AOC22{
 					visible = tree <= Character.getNumericValue(trees.get(n)[j]) ? false : true;
 				}
 				if(visible) {
-					count++;
+					answer++;
 					continue;
 				}
 				visible = true;
@@ -42,96 +44,93 @@ public class Day08 extends AOC22{
 					visible = tree <= Character.getNumericValue(trees.get(n)[j]) ? false : true;
 				}
 				if(visible) {
-					count++;
+					answer++;
 					continue;
 				}
 				visible = true;
+				
 				//Right
 				for (int n = j + 1; n < trees.get(i).length && visible; n++) {
 					visible = tree <= Character.getNumericValue(trees.get(i)[n]) ? false : true;
 				}
 				if(visible) {
-					count++;
+					answer++;
 					continue;
 				}
 				visible = true;
+				
 				//Left
 				for (int n = j - 1; n >= 0 && visible;n--) {
 					visible = tree <= Character.getNumericValue(trees.get(i)[n]) ? false : true;
 				}
 				if(visible) {
-					count++;
+					answer++;
 					continue;
 				}
 			}
 		}
 		
-		printAnswer(Integer.toString(count));
+		printAnswer(Integer.toString(answer));
 		
-		int answer = 0;
+		//Part 2
+		int answer2 = 0;
 		
 		for (int i = 0; i < trees.size(); i++) {
 			for (int j = 0; j < trees.get(i).length; j++) {
-				int c = 0;
-				int total = 0;
 				int tree = Character.getNumericValue(trees.get(i)[j]);
-				//
-				//Baixo
+				int total = 0;
+				int[] viewDist = {0,0,0,0};
+
+
+				//Down
 				for (int n = i + 1; n < trees.size(); n++) {
 					if(tree > Character.getNumericValue(trees.get(n)[j])) {
-						c++;
+						viewDist[0]++;
 					}
 					else {
-						c++;
+						viewDist[0]++;
 						break;
 					}
 				}
-				total = c;
-				c = 0;
 				
-				//Cima
+				//Up
 				for (int n = i - 1; n >= 0; n--) {
 					if(tree > Character.getNumericValue(trees.get(n)[j])) {
-						c++;
+						viewDist[1]++;
 					}
 					else {
-						c++;
+						viewDist[1]++;
 						break;
 					}
 				}
-				
-				total *= c;
-				c = 0;
 
-				//Direita
+				//Right
 				for (int n = j + 1; n < trees.get(i).length ; n++) {
 					if(tree > Character.getNumericValue(trees.get(i)[n])) {
-						c++;
+						viewDist[2]++;
 					}
 					else {
-						c++;
+						viewDist[2]++;
 						break;
 					}
 				}
-				total *= c;
-				c = 0;
+				
+				//Left
 				for (int n = j - 1; n >= 0; n--) {
 					if(tree > Character.getNumericValue(trees.get(i)[n])) {
-						c++;
+						viewDist[3]++;
 					}
 					else {
-						c++;
+						viewDist[3]++;
 						break;
 					}
 				}
-				total *= c;
 				
-				if(total > answer) {
-					answer = total;
-				}		
+				total = viewDist[0] * viewDist[1] * viewDist[2] * viewDist[3];	
+				answer2 = total > answer2 ? total : answer2;		
 			}
 		}
-		printAnswer(Integer.toString(answer));
+		printAnswer(Integer.toString(answer2));
 	}
 
 }
