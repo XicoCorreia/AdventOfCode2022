@@ -56,5 +56,10 @@ public abstract class AOC22 {
 		part++;
 	}
 	
+	protected void printAnswer(int answer) {
+		System.out.println("The answer for part " + part + " of day " + day + " is " + answer);
+		part++;
+	}
+	
 
 }
